@@ -21,10 +21,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginModel>.reactive(
-      onViewModelReady: (viewModel) async {
-
-
-      },
+        onViewModelReady: (viewModel) async {},
         viewModelBuilder: () => LoginModel(),
         builder: (context, viewModel, child) {
           return Scaffold(
@@ -80,21 +77,18 @@ class LoginPage extends StatelessWidget {
                               15.0.h.spacingH,
                               ResusableField(
                                 obscuringText: viewModel.isVisibility,
-                                keyBoardType: TextInputType.number,
                                 validator: (String? value) =>
                                     viewModel.validatePassword(value),
                                 controller: viewModel.passwordControllers,
-                                hintText: 'Enter your pin',
-                                suffixIcon:  Icon(
+                                hintText: 'Enter your password',
+                                suffixIcon: Icon(
                                   viewModel.isVisibility
-                                      ? Icons.visibility_outlined:
-                                  Icons.visibility_off_outlined,
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
                                   color: Color(0XFF6A707C),
-                                )
-                                .appTouchable(() {
+                                ).appTouchable(() {
                                   viewModel.setVisibility();
                                 }),
-
                                 onChanged: (val) {},
                               ),
                               15.0.h.spacingH,
@@ -112,10 +106,10 @@ class LoginPage extends StatelessWidget {
                               30.0.h.spacingH,
                               viewModel.isBusy
                                   ? Center(
-                                    child: const CircularProgressIndicator(
-                                      color: AppColors.primary,
-                                    ),
-                                  )
+                                      child: const CircularProgressIndicator(
+                                        color: AppColors.primary,
+                                      ),
+                                    )
                                   : NavButton(
                                       text: 'Login',
                                       radius: 8.r,
